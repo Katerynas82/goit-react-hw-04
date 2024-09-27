@@ -1,0 +1,23 @@
+.button {
+  padding: 10px 20px; 
+  border-radius: 5px;
+  background-color: rgb(215, 130, 144);
+  font-size: 14px;
+  margin: 20px auto; 
+  display: block; 
+  cursor: pointer; 
+  
+  border: none; 
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #8525de;
+  color: pink;
+  border-color: pink;
+}
+.loadMoreContainer {
+  display: flex;
+  justify-content: center; 
+  margin-top: 20px;
+}

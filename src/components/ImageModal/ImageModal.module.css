@@ -1,0 +1,54 @@
+.overlayModal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8); 
+  padding: 20px;
+  border-radius: 8px; 
+  max-width: 90%;
+  max-height: 90%;
+  margin: auto;
+  color: white; 
+}
+
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px; 
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); 
+  max-width: 80vw; 
+  max-height: 80vh; 
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  max-height: 80vh; 
+  border-radius: 8px;
+  object-fit: contain; 
+}
+
+
+.button {
+  padding: 10px 20px; 
+  border-radius: 5px;
+  background-color: rgb(215, 130, 144);
+  font-size: 14px;
+  margin: 20px auto; 
+  display: block; 
+  cursor: pointer; 
+  
+  border: none; 
+  transition: background-color 0.3s ease;
+}
+
+
+button:hover {
+  background-color: #f60eb8;
+}
