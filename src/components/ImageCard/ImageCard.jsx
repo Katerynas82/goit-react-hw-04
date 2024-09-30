@@ -1,22 +1,17 @@
-import style from '../ImageCard/ImageCard.module.css';
+import style from "../ImageCard/ImageCard.module.css";
 
 const ImageCard = ({ images, handleImageClick }) => {
   return (
     <>
-      <div className={style.imageWrapper}>
-        {images.map((image) => (
-          <li className={style.img} key={image.id}>
-            <a href={image.url}>
-              <img
-                src={image.urls.small}
-                target="_blank"
-                alt={image.alt_description || "No description"}
-                onClick={() => handleImageClick(image.urls.full)}
-              ></img>
-            </a>
-          </li>
-        ))}
-      </div>
+      <a href={images.url} rel="noopener noreferrer">
+        <img
+          src={images.urls.small}
+          target="_blank"
+          className={style.img}
+          alt={images.alt_description || "No description"}
+          onClick={() => handleImageClick(images.urls.full)}
+        ></img>
+      </a>
     </>
   );
 };

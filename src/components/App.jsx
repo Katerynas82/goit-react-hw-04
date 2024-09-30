@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { fetchImages } from "../services/api";
-import ImagesGallery from "./ImagesGallery/ImagesGallery";
+import ImageGallery from "./ImageGallery/ImageGallery";
 import Loader from "./Loader/Loader";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
 import SearchBar from "./SearchBar/SearchBar";
 import ImageModal from "./ImageModal/ImageModal";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 const App = () => {
   const [images, setImages] = useState([]);
@@ -30,20 +33,33 @@ const App = () => {
         setIsLoading(false);
       }
     };
+
     if (query) {
       getImages();
     }
   }, [page, query]);
 
+  useEffect(() => {
+    if (imageModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [imageModal]);
+
+  const handleSearchSubmit = (searchQuery) => {
+    setQuery(searchQuery);
+    setImages([]);
+    setPage(1);
+  };
+
   const handleChangePage = () => {
     setPage((prev) => prev + 1);
   };
 
-  const handleSetQuery = (topic) => {
-    setQuery(topic);
-    setImages([]);
-    setPage(1);
-  };
   const handleImageClick = (url) => {
     setLargeImageUrl(url);
     setImageModal(true);
@@ -51,9 +67,9 @@ const App = () => {
 
   return (
     <div>
-      <SearchBar setQuery={handleSetQuery} />
+      <SearchBar setQuery={handleSearchSubmit} onSubmit={handleSearchSubmit} />
       {images.length > 0 && (
-        <ImagesGallery images={images} handleImageClick={handleImageClick} />
+        <ImageGallery images={images} handleImageClick={handleImageClick} />
       )}
       {images.length > 0 && !isLoading && (
         <LoadMoreBtn handleChangePage={handleChangePage} />

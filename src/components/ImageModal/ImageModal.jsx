@@ -1,20 +1,21 @@
 import Modal from "react-modal";
 import style from "../ImageModal/ImageModal.module.css";
 
-const ImageModal = ({imageModal, setImageModal, largeImageUrl}) => {
-    // const customStyles = {className=style.content}
-    // };
-    
-      function closeModal() {
-      setImageModal(false);
-    }
+const ImageModal = ({ imageModal, setImageModal, largeImageUrl }) => {
+  // const customStyles = {className=style.content}
+  // };
+
+  function closeModal() {
+    setImageModal(false);
+  }
   return (
     <>
       <div>
         <Modal
           isOpen={imageModal}
           onRequestClose={closeModal}
-          style={style.content}
+          className={style.content}
+          overlayClassName={style.overlay}
           contentLabel="Image Modal"
           shouldCloseOnOverlayClick={true}
           shouldCloseOnEsc={true}
